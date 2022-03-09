@@ -3,38 +3,24 @@ import React from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
+import InputMask from 'react-input-mask'
 
 import './form.css'
+import { useNavigate } from 'react-router-dom'
 
 const schema = yup
   .object({
     nome: yup.string().required('O nome é obrigatório'),
-    cpf: yup
-      .string()
-      .min(11, 'Digite no minimo 8 números!')
-      .max(11)
-      .required('O CEP é obrigatório'),
-    cep: yup
-      .string()
-      .min(8, 'Digite no minimo 8 números!')
-      .max(8)
-      .required('O CEP é obrigatório'),
-    datanascimento: yup
-      .string('O data de nasimento é obrigatório')
-      .required()
-      .max(8)
-      .min(8),
-    cpf: yup.string().required('O cpf é obrigatório').max(11).min(11),
+    cpf: yup.string().required('O CEP é obrigatório'),
+    cep: yup.string().required('O CEP é obrigatório'),
+    datanascimento: yup.string().required('O data de nasimento é obrigatório'),
     rua: yup.string().required('O rua é obrigatório'),
     numero: yup.string().required('O numero é obrigatório'),
-    bairro: yup.string().required('O bairro é obrigatório'),
-    cidade: yup.string().required('O cidade é obrigatório'),
-    estado: yup.string().required('O estado é obrigatório')
+    bairro: yup.string().required('O bairro é obrigatório')
   })
   .required()
 
 export default function Formulario() {
-  //para usar useForm, instalamos via npm install react-hook-form
   const {
     register,
     handleSubmit,
@@ -47,17 +33,20 @@ export default function Formulario() {
 
   let users = JSON.parse(localStorage.getItem('users')) || []
 
+  let navigate = useNavigate()
+
   const onSubmit = e => {
     let user = e
     if (user) users.push(user)
     console.log(user)
     localStorage.setItem('users', JSON.stringify(users))
+
+    return navigate('/')
   }
 
   const checkCEP = e => {
     if (!e.target.value) return
 
-    //removendo espaço, pontos, traços do campo usando regex
     const cep = e.target.value.replace(/\D/g, '')
     console.log(cep)
 
@@ -65,9 +54,6 @@ export default function Formulario() {
     fetch(`https://viacep.com.br/ws/${cep}/json/`)
       .then(res => res.json())
       .then(data => {
-        // console.log(data)
-
-        //setando dados no formulario
         setValue('rua', data.logradouro)
         setValue('bairro', data.bairro)
         setValue('cidade', data.localidade)
@@ -87,18 +73,27 @@ export default function Formulario() {
       </label>
       <label>
         Data de Nascimento:
-        <input type="text" {...register('datanascimento')} />
+        <InputMask
+          mask="99/99/9999"
+          type="text"
+          {...register('datanascimento', { required: true })}
+        />
         <span>{errors.datanascimento?.message}</span>
       </label>
       <label>
         CPF:
-        <input type="text" {...register('cpf', { required: true })} />
+        <InputMask
+          mask="999.999.999-99"
+          type="text"
+          {...register('cpf', { required: true })}
+        />
         <span>{errors.cpf?.message}</span>
       </label>
 
       <label>
         CEP:
-        <input
+        <InputMask
+          mask="99999-999"
           type="text"
           {...register('cep', { required: true })}
           onBlur={checkCEP}
@@ -114,7 +109,7 @@ export default function Formulario() {
 
       <label>
         Nº:
-        <input type="text" {...register('numero')} />
+        <input type="number" {...register('numero')} />
         <span>{errors.numero?.message}</span>
       </label>
 

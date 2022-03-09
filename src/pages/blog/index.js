@@ -21,7 +21,7 @@ export default function Blog() {
             A small river named Duden flows by their place and supplies it with
             the necessary regelialia.
           </p>
-          <div className="btmBlog">
+          <div className="btnBlog">
             <Link to={'/blogdetails'}>
               <button>Know More</button>
             </Link>
