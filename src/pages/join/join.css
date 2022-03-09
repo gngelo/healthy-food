@@ -1,0 +1,69 @@
+.join {
+  width: 100%;
+  height: 510px;
+  background: #ffffff url('../../img/bloco_final_image.svg') no-repeat right top;
+  background-size: contain;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.ready {
+  width: 500px;
+  height: 475px;
+  align-items: center;
+  justify-content: center;
+  margin-left: 60px;
+
+  font-size: 25px;
+}
+
+.ready h1 {
+  font-size: 30px;
+}
+
+.email {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.email input {
+  margin-top: 10px;
+  width: 300px;
+
+  height: 50px;
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.email button {
+  background-color: rgb(213, 241, 170);
+
+  margin-top: 10px;
+  width: 80px;
+  height: 50px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+@media (max-width: 800px) {
+  h1 {
+    margin-left: 30px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  h1 {
+    font-size: 15px;
+    margin-left: 30px;
+  }
+}
+
+@media (max-width: 500px) {
+  h1 {
+    font-size: 10px;
+    margin-left: 30px;
+  }
+}

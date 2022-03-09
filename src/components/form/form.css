@@ -1,0 +1,123 @@
+.form {
+  width: 70%;
+  height: 100%;
+
+  padding-top: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  box-shadow: rgba(171, 209, 183, 0.3) 0px 1px 2px 0px,
+    rgba(177, 221, 190, 0.3) 0px 2px 6px 2px;
+
+  border-radius: 15px;
+  opacity: 0.9;
+  margin-bottom: 10px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+
+  color: gray;
+}
+
+label input {
+  border-radius: 3px;
+  width: 500px;
+  height: 30px;
+
+  color: black;
+  font-weight: 500;
+  font-size: 15px;
+  text-align: center;
+  border: none;
+  opacity: 0.9;
+  background-color: rgb(246, 250, 247);
+  box-shadow: rgba(214, 236, 221, 0.3) 0px 1px 2px 0px,
+    rgba(206, 228, 212, 0.3) 0px 2px 6px 2px;
+}
+
+span {
+  color: red;
+  font-size: 12px;
+}
+
+button {
+  background-color: rgb(255, 255, 255);
+  border: 0;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #6dcc45;
+
+  margin-top: 5px;
+  width: 200px;
+  height: 30px;
+
+  cursor: pointer;
+  box-shadow: rgba(189, 219, 198, 0.3) 0px 1px 2px 0px,
+    rgba(189, 219, 198, 0.3) 0px 2px 6px 2px;
+
+  margin-bottom: 10px;
+}
+
+@media (max-width: 800px) {
+  .form {
+    /* width: 500px; */
+    height: 100%;
+    margin-bottom: 30px;
+  }
+
+  label {
+    height: 40px;
+    font-size: 15px;
+  }
+  label input {
+    width: 400px;
+    opacity: 0.8;
+  }
+
+  button {
+    width: 200px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 700px) {
+  .form {
+    /* width: 450px; */
+    height: 100%;
+  }
+
+  label {
+    height: 40px;
+    font-size: 15px;
+  }
+  label input {
+    width: 300px;
+    opacity: 0.8;
+  }
+
+  button {
+    width: 200px;
+  }
+}
+
+@media (max-width: 500px) {
+  .form {
+    /* width: 400px; */
+    height: 100%;
+  }
+  label input {
+    width: 250px;
+    opacity: 0.8;
+  }
+
+  button {
+    width: 200px;
+  }
+}
